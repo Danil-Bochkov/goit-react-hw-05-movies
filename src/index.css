@@ -1,7 +1,14 @@
 @import-normalize; /* bring in normalize.css styles */
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
+  background-color:darkgray;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -12,4 +19,290 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.Loader {
+  display: flex;
+    justify-content: center;
+}
+
+/* ------------------------Header----------------------------- */
+
+.header {
+  padding: 20px;
+
+  border-bottom: 1px solid white;
+}
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+/* ---------------------Search Field------------------------- */
+
+.search {
+  display: block;
+  
+}
+
+.search__input {
+  position: relative;
+  display: block;
+  padding: 10px;
+  padding-left: 25px;
+
+  font-size: 20px;
+  line-height: 1.4;
+
+  margin: 25px auto;
+
+  border: none;
+  border-radius: 6px;
+}
+
+.search__input:focus {
+  outline: 1px solid #FF7E85;
+}
+
+
+/* --------------------Trend List---------------------------- */
+
+.trendList {
+  margin-top: 60px;
+}
+
+/* --------------------Movie List--------------------------- */
+
+.moviesList, .trendList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.moviesList__item, .trendList__item {
+  font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+  
+    text-align: center;
+    letter-spacing: 0.03em;
+  color: #0E1721;
+}
+
+.moviesList__item:hover, .moviesList__item:focus, .trendList__item:focus,
+.trendList__item:hover {
+  color: #FF7E85;
+}
+
+/* --------------------Movie Info-------------------------- */
+
+
+.movieCard {
+  margin: 20px auto;
+  padding: 21px;
+
+  max-width: 1100px;
+
+  display: flex;
+
+  background: #FFFFFF;
+    box-shadow: -2px -2px 4px rgba(126, 147, 255, 0.2);
+    border-radius: 6px;
+    font-family: 'Roboto';
+    letter-spacing: 0.03em;
+}
+
+.movieCard__image {
+  width: 240px;
+    height: 300px;
+  border-radius: 6px;
+  margin-right: 22px;
+}
+
+.movieInfo {
+  color: #0E1721;
+}
+
+.movieInfo__title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.16;
+    margin-bottom: 4px;
+}
+
+.movieInfo__rating {
+  display: block;
+  font-size: 14px;
+    line-height: 1.14;
+  
+    color: #7F8E9D;
+
+    margin-bottom: 20px;
+}
+
+.movieInfo__title-information {
+  font-weight: 500;
+    font-size: 16px;
+    line-height: 1.19;
+  
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.movieInfo__overview {
+  width: 564px;
+  font-weight: 400;
+    font-size: 15px;
+    line-height: 1.16;
+    margin-bottom: 28px;
+}
+
+.movieInfo__genre {
+  display: flex;
+  gap: 10px;
+}
+
+/* -----------------------Additional Info------------------------------- */
+
+.additionalInfo {
+  margin: 20px auto;
+    padding: 21px;
+  
+    max-width: 1100px;
+
+    background: #FFFFFF;
+      box-shadow: -2px -2px 4px rgba(126, 147, 255, 0.2);
+      border-radius: 6px;
+      font-family: 'Roboto';
+      letter-spacing: 0.03em;
+}
+
+.additionalInfo__title {
+  font-weight: 500;
+    font-size: 16px;
+    line-height: 1.4;
+  
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    
+    color: #0E1721;
+}
+
+
+.listOfLinks {
+ display: flex;
+
+ gap: 25px;
+
+ margin-top: 20px;
+ margin-bottom: 40px;
+}
+
+.listOfLinks__item {
+  font-size: 14px;
+    line-height: 1.17;
+
+    text-align: center;
+    letter-spacing: 0.01em;
+}
+
+.listOfLinks__item:hover, .listOfLinks__item:focus {
+  color: #FF7E85
+}
+
+/* ----------------------Cast------------------------- */
+
+.cast {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+
+}
+
+.castItem {
+display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 0px 10px;
+  gap: 4px;
+
+  width: 158px;
+  
+    background: #FFFFFF;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+}
+
+.castItem__image {
+  border-radius: 6px;
+width: 158px;
+  height: 206px;
+  flex-grow: 1;
+  margin-bottom: 7px;
+}
+
+/* -----------------------Reviews------------------------------ */
+
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.review__item {
+  padding: 10px;
+  
+  letter-spacing: 0.03em;
+
+  border-radius: 6px;
+  border: 1px solid black;
+}
+
+.review__author {
+  font-weight: 500;
+    font-size: 16px;
+    line-height: 1.13;
+  
+    text-transform: uppercase;
+  
+    color: #7F8E9D;
+    margin-bottom: 10px;
+}
+
+.review__text {
+  font-size: 14px;
+    line-height: 1.21;
+
+    color: #0E1721;
 }
