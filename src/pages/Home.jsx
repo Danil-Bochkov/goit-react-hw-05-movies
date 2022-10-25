@@ -10,7 +10,7 @@ const Home = () => {
     getMovies().then(response => setMovies(response.data.results));
   }, []);
   return (
-    <main>
+    <main className="container">
       <ul className="trendList">
         {movies.map(({ title, id }) => (
           <li className="trendList__item" key={id}>

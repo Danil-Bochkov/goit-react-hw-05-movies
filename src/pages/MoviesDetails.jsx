@@ -24,7 +24,7 @@ const MoviesDetails = () => {
   console.log(location.state);
 
   return (
-    <main>
+    <main className='container'>
       {isLoading ? (
         <Loader />
       ) : (

@@ -24,7 +24,7 @@ const Link = styled(NavLink)`
 export const SharedLayout = () => {
   return (
     <div>
-      <header className="header">
+      <header className="header container">
         <nav className="nav">
           <Link to="/" end>
             Home

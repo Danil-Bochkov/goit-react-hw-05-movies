@@ -27,7 +27,7 @@ const Movies = () => {
   }, [movieName]);
 
   return (
-    <main>
+    <main className="container">
       <SearchBox value={movieName} onChange={updateQueryString} />
       {isLoading ? (
         <Loader />
