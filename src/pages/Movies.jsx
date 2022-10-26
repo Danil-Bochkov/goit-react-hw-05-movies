@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import { MoviesList } from '../components/MoviesList';
-import { SearchBox } from '../components/SearchBox';
+import SearchBox from '../components/SearchBox';
 import { searchMoviesByName } from '../API';
 import { useEffect, useState } from 'react';
 import Loader from 'components/Loader';
@@ -10,11 +10,6 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const movieName = searchParams.get('name') ?? '';
-
-  const updateQueryString = name => {
-    const nextParams = name !== '' ? { name } : {};
-    setSearchParams(nextParams);
-  };
 
   useEffect(() => {
     if (!movieName) {
@@ -26,9 +21,13 @@ const Movies = () => {
       .finally(() => setIsLoading(false));
   }, [movieName]);
 
+  const handleSubmit = query => {
+    setSearchParams({ name: query });
+  };
+
   return (
     <main className="container">
-      <SearchBox value={movieName} onChange={updateQueryString} />
+      <SearchBox onSubmit={handleSubmit} />
       {isLoading ? (
         <Loader />
       ) : (

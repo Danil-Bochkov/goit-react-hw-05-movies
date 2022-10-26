@@ -1,10 +1,11 @@
-import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
-import { BackLink } from '../components/BackLink';
+import { useParams, useLocation, Link, Route, Routes } from 'react-router-dom';
 import { getMovieDetails, IMG } from '../API';
-import { Suspense } from 'react';
-import { useEffect, useState } from 'react';
-import { Fragment } from 'react';
+import { useEffect, useState, Fragment, Suspense } from 'react';
+import { BackLink } from '../components/BackLink';
 import Loader from 'components/Loader';
+import Cast from '../components/Cast';
+import Review from '../components/Review';
+import route from 'utils/route';
 
 const MoviesDetails = () => {
   const { id } = useParams();
@@ -24,7 +25,7 @@ const MoviesDetails = () => {
   console.log(location.state);
 
   return (
-    <main className='container'>
+    <main className="container">
       {isLoading ? (
         <Loader />
       ) : (
@@ -58,14 +59,21 @@ const MoviesDetails = () => {
             </span>
             <ul className="listOfLinks">
               <li className="listOfLinks__item">
-                <Link to="cast">Cast</Link>
+                <Link to="cast" state={{ from: location.state?.from }}>
+                  Cast
+                </Link>
               </li>
               <li className="listOfLinks__item">
-                <Link to="reviews">Reviews</Link>
+                <Link to="reviews" state={{ from: location.state?.from }}>
+                  Reviews
+                </Link>
               </li>
             </ul>
-            <Suspense fallback={<div>Loading subpage...</div>}>
-              <Outlet />
+            <Suspense fallback={<Loader />}>
+              <Routes>
+                <Route path={route.cast} element={<Cast />} />
+                <Route path={route.reviews} element={<Review />} />
+              </Routes>
             </Suspense>
           </div>
         </Fragment>
