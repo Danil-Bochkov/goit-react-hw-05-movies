@@ -3,8 +3,8 @@ import { getMovieDetails, IMG } from '../API';
 import { useEffect, useState, Fragment, Suspense } from 'react';
 import { BackLink } from '../components/BackLink';
 import Loader from 'components/Loader';
-import Cast from '../components/Cast';
-import Review from '../components/Review';
+import Cast from './Cast';
+import Review from './Review';
 import route from 'utils/route';
 
 const MoviesDetails = () => {
