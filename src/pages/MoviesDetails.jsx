@@ -22,8 +22,6 @@ const MoviesDetails = () => {
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/movies';
 
-  console.log(location.state);
-
   return (
     <main className="container">
       {isLoading ? (
@@ -38,17 +36,27 @@ const MoviesDetails = () => {
               alt={movie?.name}
             />
             <div className="movieInfo">
-              <h2 className="movieInfo__title">{movie?.title}</h2>
-              <span className="movieInfo__rating">
-                User Score {Math.round(movie?.vote_average * 10)}%
-              </span>
-              <h3 className="movieInfo__title-information">Overview</h3>
-              <p className="movieInfo__overview">{movie?.overview}</p>
-              <h4 className="movieInfo__title-information">Genres</h4>
-              <div className="movieInfo__genre">
-                {movie?.genres.map(genre => {
-                  return <span key={genre.id}>{genre.name}</span>;
-                })}
+              <div>
+                <h2 className="movieInfo__title">{movie?.title}</h2>
+                <span className="movieInfo__rating">
+                  User Score {Math.round(movie?.vote_average * 10)}%
+                </span>
+              </div>
+              <div>
+                <h3 className="movieInfo__title-information">Overview</h3>
+                <p className="movieInfo__overview">{movie?.overview}</p>
+              </div>
+              <div>
+                <h4 className="movieInfo__title-information">Genres</h4>
+                <div className="movieInfo__genre">
+                  {movie?.genres.map(genre => {
+                    return (
+                      <span key={genre.id} className="movieInfo__genre_text">
+                        {genre.name}
+                      </span>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>

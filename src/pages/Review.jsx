@@ -24,7 +24,9 @@ const Reviews = () => {
           {users?.map(({ author, content, id }) => {
             return (
               <li className="review__item" key={id}>
-                <h2 className="review__author">Author: {author}</h2>
+                <h2 className="review__author">
+                  Author: <p>{author}</p>
+                </h2>
                 <p className="review__text">{content}</p>
               </li>
             );

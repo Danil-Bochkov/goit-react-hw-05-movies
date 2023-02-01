@@ -27,7 +27,7 @@ const SearchBox = ({ onSubmit }) => {
         placeholder="Search movies"
       />
       <button type="submit" className="search__button">
-        <BiSearch />
+        <BiSearch size={'20px'} />
       </button>
     </form>
   );

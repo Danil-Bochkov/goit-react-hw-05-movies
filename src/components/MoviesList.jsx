@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import { IMG } from '../API';
 
 export const MoviesList = ({ movies, movieName }) => {
   const location = useLocation();
@@ -11,7 +12,11 @@ export const MoviesList = ({ movies, movieName }) => {
             to={`${movie?.id}`}
             state={{ from: `${location.pathname}?name=${movieName}` }}
           >
-            {movie?.title}
+            <img
+              className="trendList__pic"
+              src={movie?.poster_path && IMG(movie?.poster_path, 200)}
+              alt={movie?.title}
+            />
           </Link>
         </li>
       ))}

@@ -1,4 +1,4 @@
-import { getMovies } from '../API';
+import { getMovies, IMG } from '../API';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import route from 'utils/route';
@@ -11,11 +11,16 @@ const Home = () => {
   }, []);
   return (
     <main className="container">
+      <p className="label">Top movies of the week</p>
       <ul className="trendList">
-        {movies.map(({ title, id }) => (
+        {movies.map(({ poster_path, title, id }) => (
           <li className="trendList__item" key={id}>
             <Link state={{ from: route.home }} to={`${route.movies}/${id}`}>
-              {title}
+              <img
+                className="trendList__pic"
+                src={poster_path && IMG(poster_path, 200)}
+                alt={title}
+              />
             </Link>
           </li>
         ))}

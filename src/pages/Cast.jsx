@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getMovieCredits, IMG } from 'API';
 import { useParams } from 'react-router-dom';
 import Loader from 'components/Loader';
+import unknownPerson from '../images/unknown-actor.png';
 
 const Cast = () => {
   const { id } = useParams();
@@ -20,18 +21,26 @@ const Cast = () => {
         <Loader />
       ) : cast.length ? (
         <ul className="cast">
-          {cast.map(({ id, name, profile_path, character }) => {
+          {cast.map(({ name, profile_path, character }, id) => {
             return (
               <li key={id} className="castItem">
-                <img
-                  className="castItem__image"
-                  src={profile_path && IMG(profile_path, 200)}
-                  alt={name}
-                />
-                {name}
-                <span>
-                  Character: <b>{character}</b>
-                </span>
+                {profile_path ? (
+                  <img
+                    className="castItem__image"
+                    src={profile_path && IMG(profile_path, 200)}
+                    alt={name}
+                  />
+                ) : (
+                  <div className="castItem__image_unknown">
+                    <img src={unknownPerson} alt={name} />
+                  </div>
+                )}
+                <div className="castItem__info">
+                  {name}
+                  <span>
+                    Character: <b>{character}</b>
+                  </span>
+                </div>
               </li>
             );
           })}
